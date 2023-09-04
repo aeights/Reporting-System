@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function pengaduan()
     {
         $data = Category::all();
-        return view('pengaduan',[
+        return view('pengaduan', [
             'category' => $data,
         ]);
     }
@@ -25,9 +25,9 @@ class HomeController extends Controller
 
     public function cekStatus(Request $request)
     {
-        $report = Report::where('ticket_id',$request->ticket_id)->first();
-        $reporter = Reporter::where('id',$report->reporter_id)->first();
-        return view('detail-pengaduan',[
+        $report = Report::where('ticket_id', $request->ticket_id)->first();
+        $reporter = Reporter::where('id', $report->reporter_id)->first();
+        return view('detail-pengaduan', [
             'report' => $report,
             'reporter' => $reporter,
         ]);
@@ -81,7 +81,7 @@ class HomeController extends Controller
                 'address' => $request->address,
             ]);
 
-            Report::create([
+            $report = Report::create([
                 'reporter_id' => $reporter->id,
                 'category_id' => $request->category_id,
                 'ticket_id' => self::generateTicketId(),
@@ -89,12 +89,11 @@ class HomeController extends Controller
                 'description' => $request->description,
                 'status' => 'Pending',
             ]);
+            $report->addMediaFromRequest('image')->toMediaCollection('envidence');
+            return view('detail-pengaduan', [
+                'report' => $report,
+                'reporter' => $reporter,
+            ]);
         }
-    }
-
-    public function log(Post $post){
-        return view('posts.log',[
-            'logs' => Activity::where('subject_type',Post::class)->where('subject_id',$post->id)->latest()->get()
-        ]);
     }
 }

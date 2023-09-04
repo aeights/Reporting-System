@@ -18,7 +18,6 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        // dd($request);
         try {
             $validated = $request->validate([
                 'name' => 'required',
@@ -40,6 +39,7 @@ class RegisterController extends Controller
                     'email' => $request->email,
                     'password' => $request->password
                 ]);
+                return redirect('/dashboard');
             }
         } catch (Exception $e) {
             dd($e);

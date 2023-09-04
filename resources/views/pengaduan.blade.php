@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container bg-white p-5 shadow rounded">
-        <form action="{{ url('/pengaduan/store') }}" method="POST">
+        <form action="{{ url('/pengaduan/store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <p class="fs-5">Personal Data</p>
             <div class="mb-3">
@@ -52,17 +52,21 @@
                     placeholder="Report title">
             </div>
             <div class="mb-3">
-              <label for="formSelect" class="form-label">Report Category</label>
-              <select id="formSelect" name="category_id" class="form-select" aria-label="Report category">
-                  <option selected hidden >Category</option>
-                  @foreach ($category as $item)
-                  <option value="{{ $item->id }}">{{ $item->name }}</option>
-                  @endforeach
-              </select>
+                <label for="formSelect" class="form-label">Report Category</label>
+                <select id="formSelect" name="category_id" class="form-select" aria-label="Report category">
+                    <option selected hidden>Category</option>
+                    @foreach ($category as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea" class="form-label">Description</label>
                 <textarea class="form-control" name="description" id="exampleFormControlTextarea" rows="5"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="formFileMultiple" class="form-label">Report Evidence</label>
+                <input class="form-control" name="image" type="file" id="formFileMultiple" multiple>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

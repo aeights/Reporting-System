@@ -12,4 +12,9 @@ class Category extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function reportCategory()
+    {
+        return $this->belongsTo(Report::class);
+    }
 }
