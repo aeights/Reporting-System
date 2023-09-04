@@ -41,10 +41,10 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard',[DashboardController::class,'index']);
+    Route::get('/dashboard/report',[DashboardController::class,'report']);
+    Route::get('/dashboard/report/{id}',[DashboardController::class,'reportDetail']);
+    Route::post('/dashboard/report/edit',[DashboardController::class,'reportEdit']);
+    Route::get('/dashboard/activity-log',[DashboardController::class,'log']);
+    Route::get('/dashboard/report/tracker/{$id}',[DashboardController::class,'reportTracker']);
 });
-Route::get('/dashboard',[DashboardController::class,'index']);
-Route::get('/dashboard/report',[DashboardController::class,'report']);
-Route::get('/dashboard/report/{id}',[DashboardController::class,'reportDetail']);
-Route::post('/dashboard/report/edit',[DashboardController::class,'reportEdit']);
-Route::get('/dashboard/activity-log',[DashboardController::class,'log']);
-Route::get('/dashboard/report/tracker/{$id}',[DashboardController::class,'reportTracker']);
