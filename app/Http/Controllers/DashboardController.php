@@ -56,7 +56,7 @@ class DashboardController extends Controller
         $report = Report::find($request->id);
         $report->update(['status' => $request->status]);
         $tracker = ReportTracker::create([
-            'user_id' => '1',
+            'user_id' => Auth::user()->id,
             'report_id' => $request->id,
             'status' => $request->status,
             'note' => "Status has changed to {$request->status}"
