@@ -14,3 +14,5 @@
 ![image](https://github.com/aeights/Reporting-System/assets/108174782/e26be369-dc5e-4956-bb07-03e908fb456e)
 8. Activity Log
 ![image](https://github.com/aeights/Reporting-System/assets/108174782/e80e0328-abce-4665-b5d9-0175d7acfa01)
+9. Report Tracker
+![image](https://github.com/aeights/Reporting-System/assets/108174782/bdb3dfdf-a069-4dc3-ab59-0ec3dc7000e0)
